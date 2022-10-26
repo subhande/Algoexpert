@@ -20,7 +20,7 @@ Sample Output
 
 
 # Time Complexity: O(n^2) | Space Complexity: O(1)
-def twoNumberSum(array, targetSum):
+def twoNumberSum1(array, targetSum):
     for i in range(len(array)-1):
         firstNum = array[i]
         for j in range(i+1, len(array)):
@@ -30,7 +30,7 @@ def twoNumberSum(array, targetSum):
     return []
 
 # Time Complexity: O(nlogn) | Space Complexity: O(1)
-def twoNumberSum(array, targetSum):
+def twoNumberSum2(array, targetSum):
     array.sort()
     left = 0
     right = len(array) - 1
@@ -45,7 +45,7 @@ def twoNumberSum(array, targetSum):
     return []
 
 # Time Complexity: O(nlogn) | Space Complexity: O(1)
-def twoNumberSum(array, targetSum):
+def twoNumberSum3(array, targetSum):
     nums = {}
     for num in array:
         potentialMatch = targetSum - num
