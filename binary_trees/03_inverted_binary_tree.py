@@ -27,15 +27,16 @@ Sample Output
 
 # Brute Force
 # Time: O(n) | Space: O(n)
+    
 def invertBinaryTree(tree):
     queue = [tree]
     while len(queue):
         current = queue.pop(0)
         if current is None:
-            return
+            continue
         swapLeftAndRight(current)
-        invertBinaryTree(current.left)
-        invertBinaryTree(current.right)
+        queue.append(current.left)
+        queue.append(current.right)
 
 
 # Optimal Approach
