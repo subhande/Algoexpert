@@ -50,12 +50,6 @@ def maxSubsetSumNoAdjacent(array):
     first = max(array[0], array[1])
     for i in range(2, len(array)):
         current = max(first, second + array[i])
-        second, first = first, current
+        second = first
+        first = current
     return first
-
-
-if __name__ == "__main__":
-    array = [75, 105, 120, 75, 90, 135]
-    array = [4, 3, 5, 200, 5, 3]
-
-    print(maxSubsetSumNoAdjacent(array))

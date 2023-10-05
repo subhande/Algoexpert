@@ -14,18 +14,6 @@ Sample Output
 2 // 1x1 + 1x5 and 6x1
 
 Example 1:
-$6 [5, 1]
-
-[0, 1, 2, 3, 4, 5, 6]
-0 -> 0
-1 -> 1
-2 -> 1 * 2 -> 1
-3 -> 1 * 3 -> 1
-4 -> 1 * 4 -> 1
-5 -> 1 * 5 | 5 * 1 -> 2
-6 -> 1 * 5 + 1 * 1 | 1 * 6 -> 2
-
-Example 2:
 $10 [1, 5, 10, 25]
 
 ways --> [1, 1, 1, 1, 1, 2, 2, 2, 2, 2,  4]
@@ -36,6 +24,7 @@ ways --> [1, 1, 1, 1, 1, 2, 2, 2, 2, 2,  4]
         DP Formula:
         ways[i] = ways[i] + ways[i - denom]
 
+
 """
 
 # Solution 1
@@ -43,6 +32,7 @@ ways --> [1, 1, 1, 1, 1, 2, 2, 2, 2, 2,  4]
 def numberOfWaysToMakeChange(n, denoms):
     ways = [0 for _ in range(n+1)]
     ways[0] = 1
+
     for denom in denoms:
         for amount in range(1, n+1):
             if denom <= amount:
@@ -52,4 +42,4 @@ def numberOfWaysToMakeChange(n, denoms):
 if __name__ == "__main__":
     n = 10
     denoms = [1, 5, 10, 25]
-    print(numberOfWaysToMakeChange(n, denoms))    
+    print(numberOfWaysToMakeChange(n, denoms))
