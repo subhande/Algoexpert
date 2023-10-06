@@ -20,9 +20,7 @@ Example 1:
 Example 1:
 $7 [1, 5, 10]
 
-
-
-ways --> [0, 1, 2, 3, 4, 1, 2, 3]
+numberOfCoins --> [0, 1, 2, 3, 4, 1, 2, 3]
          [-, -, -, -, -, -, -, -]
          [0, 1, 2, 3, 4, 5, 6, 7]
 
@@ -32,15 +30,17 @@ ways --> [0, 1, 2, 3, 4, 1, 2, 3]
 
 
 """
+
 # Time: O(nd) | Space: O(n)
 def minNumberOfCoinsForChange(n, denoms):
     numberOfCoins = [float("inf") for _ in range(n+1)]
     numberOfCoins[0] = 0
     for denom in denoms:
         for amount in range(1, n+1):
-            if denom <= amount:
+            if denom <= amount :
                 numberOfCoins[amount] = min(numberOfCoins[amount], numberOfCoins[amount-denom]+1)
     return numberOfCoins[n] if numberOfCoins[n] != float("inf") else -1
+
 
 if __name__ == "__main__":
     n = 7
