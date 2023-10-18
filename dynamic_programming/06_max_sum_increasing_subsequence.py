@@ -19,11 +19,17 @@ sums[i] = max(sums[i], sums[j] + array[i]) for all j < i and array[j] < array[i]
 
 array -> [8, 12, 2, 3, 15, 5, 7]
 sums ->  [8, 20, 2, 5, 35, 10, 17]
-seqs ->  [[8], [8, 12], [2], [2, 3], [8, 12, 15], [2, 5], [2, 5, 7]]
+seqs ->  [[8], [8, 12], [2], [2, 3], [8, 12, 15], [2, 3, 5], [2, 3, 5, 7]]
+seqsIndexs -> [None, 0, None, 2, 1, 3, 6]
 
-
+currentNum = array[i]
+otherNum = array[j] where 0 <= j < i
+if otherNum < currentNum and sums[j] + currentNum >= sums[i]:
+    sums[i] = sums[j] + currentNum
+    sequences[i] = j
 
 """
+
 # Solution 1: My solution
 # Time: O(n^2) | Space: O(n^2)
 def maxSumIncreasingSubsequence(array):
@@ -37,16 +43,16 @@ def maxSumIncreasingSubsequence(array):
         sums[i] = array[i-1]
         sques[i] = [array[i-1]]
         for j in range (1, i):
-            if array[j-1] < array[i-1]:
-                new_sum = max(sums[i], sums[j] + array[i-1])
+            if array[j-1] == array[i-1]:
+                new_sum = max(sums[i], sums[i]+array[j-1])
                 if sums[i] < sums[j] + array[i-1]:
                     sums[i] = new_sum
                     sques[i] = sques[j] + [array[i-1]]
     return [max(sums), sques[sums.index(max(sums))]]
 
+
 # Solution 2: AlgoExpert solution
 # Time: O(n^2) | Space: O(n)
-
 def maxSumIncreasingSubsequence(array):
     sequences = [None for x in array]
     sums = array[:]

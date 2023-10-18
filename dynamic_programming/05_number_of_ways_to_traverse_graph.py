@@ -25,6 +25,12 @@ height = 3
 Sample Output
 10
 
+ways[height][width] = ways[height-1][width] + ways[height][width-1] if height > 1 and width > 1 else 1
+
+width = 3
+height = 2
+2,3 -> 1,3 + 2,2 -> 1 + 1,2 + 2,1 -> 1 + 1 + 1 -> 3
+
 """
 
 # Solution 1: Recusion
