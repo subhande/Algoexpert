@@ -23,9 +23,8 @@ Sample Output
 // There are 6 edeges between the first and the last node of this tree's longest path.
 
 
-
-
 """
+
 
 class BinaryTree:
     def __init__(self, value, left=None, right=None):
@@ -33,37 +32,34 @@ class BinaryTree:
         self.left = left
         self.right = right
 
-# Approach 1
 
-class TreeInfo:
-    def __init__(self, diameter):
-        self.diameter = diameter
+# Approach 1
+def binaryTreeDiameter(tree):
+    maxHeight, maxDiameter = binaryTreeDiameterHelper(tree)
+    return maxDiameter
 
 # Time: O(n) | Space: O(h)
-def binaryTreeDiameter(tree):
-    treeInfo = TreeInfo(0)
-    binaryTreeDiameterHelper(tree, 0, treeInfo)
-    return treeInfo.diameter
+def binaryTreeDiameterHelper(node):
+    if node is None:
+        maxHeight = 0
+        maxDiameter = 0
+    else:
+        leftMaxHeight, leftMaxDiameter = binaryTreeDiameterHelper(node.left)
+        rightMaxHeight, rightMaxDiameter = binaryTreeDiameterHelper(node.right)
+        longestPathThroughRoot = leftMaxHeight + rightMaxHeight
+        maxHeight = 1 + max(leftMaxHeight, rightMaxHeight)
+        maxDiameter = max([longestPathThroughRoot, leftMaxDiameter, rightMaxDiameter])
+    return maxHeight, maxDiameter
 
-def binaryTreeDiameterHelper(tree, height, treeInfo):
-    if tree is None:
-        return 0
-    leftHeight = binaryTreeDiameterHelper(tree.left, height, treeInfo)
-    rightHeight = binaryTreeDiameterHelper(tree.right, height, treeInfo)
-    height = max(leftHeight, rightHeight) + 1
-    treeInfo.diameter = max(leftHeight + rightHeight, treeInfo.diameter)
-    return height
-
-
-
-# Approach 1
+# Approach 2
+# Time: O(n) | Space: O(h)
 
 class TreeInfo:
     def __init__(self, diameter, height):
         self.diameter = diameter
         self.height = height
 
-# Time: O(n) | Space: O(h)
+        
 def binaryTreeDiameter(tree):
     return getTreeInfo(tree).diameter
 
