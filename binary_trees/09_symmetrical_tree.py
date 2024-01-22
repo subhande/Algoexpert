@@ -6,15 +6,21 @@ Write a function that takes in a Binary Tree and checks if its a mirror image of
 A Binary Tree is symmetric if its data and shape remain unchanged when it's reflected about the root node. The following tree is an example of a symmetric Binary Tree:
 
 Sample Input
-tree =             1    <-- root
+tree =              1    <-- root
+                 /    \
+                2      2
+              /   \  /   \
+             3     4 4    3
+            / \          / \
+           5   6        6   5
 
-
+Sample Output
+True
 
 
 """
 
 
-# This is an input class. Do not edit.
 class BinaryTree:
     def __init__(self, value, left=None, right=None):
         self.value = value
@@ -33,7 +39,7 @@ def treesAreMirrored(left, right):
         )
     return left == right
 
-
+# Time: O(n) | Space: O(h)
 def symmetricalTree(tree):
     stackLeft = [tree.left]
     stackRight = [tree.right]

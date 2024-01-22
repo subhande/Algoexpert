@@ -24,7 +24,7 @@ Sample Output
 # Time: O(log(n)) | Space: O(log(n))
 # Worst: O(n) | O(n)
 def findClosestValueInBst(tree, target):
-   findClosestValueInBstHelper(tree, target, tree.value)
+   return findClosestValueInBstHelper(tree, target, tree.value)
 
 def findClosestValueInBstHelper(tree, target, closest):
     if tree is None:
@@ -41,7 +41,6 @@ def findClosestValueInBstHelper(tree, target, closest):
    
 
 
-# This is the class of the input tree. Do not edit.
 class BST:
     def __init__(self, value):
         self.value = value

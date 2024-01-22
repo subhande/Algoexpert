@@ -10,11 +10,11 @@ Each BST node has an integer value, a left child node, and a right child node. A
 Sample Input
 tree =            10
                 /    \
-                5      15
-                / \    /  \
-                2   5  13  22
-                /        \
-                1          14
+               5      15
+              / \    /  \
+             2   5  13  22
+            /        \
+           1          14
 k = 3
 
 Sample Output
@@ -22,7 +22,6 @@ Sample Output
 
 """
 
-# This is an input class. Do not edit.
 class BST:
     def __init__(self, value, left=None, right=None):
         self.value = value
